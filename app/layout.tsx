@@ -1,36 +1,24 @@
 // app/layout.tsx
+import type { Metadata } from 'next'
 import * as React from 'react'
-import "./globals.css"
+import { Inter } from 'next/font/google'
+import './globals.css'
 
-// Since next.js dependencies aren't available, we'll define minimal types
-interface Metadata {
-  title: string
-  description: string 
-}
-
-// Create a basic font class simulation since next/font isn't available
-const inter = {
-  className: 'font-inter'
-}
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Ralah Global Broiler Farm - Dashboard",
-  description: "Farm management dashboard for tracking broiler performance",
+  title: 'Broiler App',
+  description: 'Farm Management Dashboard',
 }
 
-interface RootLayoutProps {
+export default function RootLayout({
+  children,
+}: {
   children: React.ReactNode
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body className={`min-h-screen bg-background font-sans antialiased ${inter.className}`}>
-        <div className="relative flex min-h-screen flex-col">
-          <div className="flex-1">{children}</div>
-        </div>
-      </body>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }
