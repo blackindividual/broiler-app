@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  distDir: 'farm-dashboard/.next',
-  experimental: {
-    appDir: true,
-  },
+  // No experimental options needed for src directory
 }
 
 module.exports = nextConfig

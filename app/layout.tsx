@@ -1,14 +1,18 @@
 // app/layout.tsx
-import type { Metadata } from 'next'
-import * as React from 'react'
+
 import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+// Initialize Inter font
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap'  // Add display swap for better font loading
+})
 
-export const metadata: Metadata = {
-  title: 'Broiler App',
-  description: 'Farm Management Dashboard',
+// Metadata must be in a server component (no 'use client' directive)
+export const metadata = {
+  title: 'Next.js App',
+  description: 'Created with Next.js',
 }
 
 export default function RootLayout({
@@ -18,7 +22,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body 
+        className={inter.className} 
+        suppressHydrationWarning
+        data-gr-ext-installed=""
+        data-new-gr-c-s-check-loaded=""
+      >
+        {children}
+      </body>
     </html>
   )
 }
